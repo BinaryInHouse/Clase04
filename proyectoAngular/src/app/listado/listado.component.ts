@@ -1,5 +1,6 @@
 import { DataService } from '../servicios/data.service';
 import { Component, OnInit } from '@angular/core';
+import { IReceta } from '../modelos/recetas.interfaces';
 
 @Component({
   selector: 'app-listado',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListadoComponent implements OnInit {
 
-  data: Array<{}>
+  data: IReceta[] = []
 
   constructor(private dataService: DataService) { }
 

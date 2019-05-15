@@ -1,21 +1,23 @@
 import { Injectable, EventEmitter } from '@angular/core';
+import { IReceta } from '../modelos/recetas.interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  onCambioData: EventEmitter<Array<{}>> = new EventEmitter<Array<{}>>()
+  onCambioData: EventEmitter<IReceta[]> = new EventEmitter<IReceta[]>()
 
-  private data: Array<{}> = [
+  private data: IReceta[] = [
     { titulo: "Arroz con pato", descripcion: "plato tradicional norteño" },
     { titulo: "Picante de cuy", descripcion: "plato típico de la sierra" },
     { titulo: "Tacacho con cecina", descripcion: "plato típico de la selva" }
   ]
 
+
   constructor() { }
 
-  listar(): Array<{}> {
+  listar(): IReceta[] {
     return this.data
   }
 
