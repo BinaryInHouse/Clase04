@@ -1,5 +1,5 @@
 import { DataService } from '../servicios/data.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { IReceta } from '../modelos/recetas.interfaces';
 
 @Component({
@@ -9,7 +9,8 @@ import { IReceta } from '../modelos/recetas.interfaces';
 })
 export class ListadoComponent implements OnInit {
 
-  data: IReceta[] = []
+  data: Array<IReceta>
+  @Output() onCambiarVista: EventEmitter<number> = new EventEmitter<number>()
 
   constructor(private dataService: DataService) { }
 
@@ -20,6 +21,10 @@ export class ListadoComponent implements OnInit {
       .subscribe(
         elementos => this.data = elementos
       )
+  }
+
+  nuevaReceta() {
+    this.onCambiarVista.emit(3)
   }
 
 }
